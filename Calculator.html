@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calculator</title>
+</head>
+<style>
+    body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.calculator {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    border-radius: 10px;
+    background-color: blue;
+}
+
+.display {
+    background-color: gray;
+    border-radius: 10px 10px 0px 0px;
+    color: white;
+    font-size: 2em;
+    padding: 20px;
+    text-align: right;
+}
+
+.buttons {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+button {
+    flex: 1 0 25%;
+    padding: 20px;
+    font-size: 1.2em;
+    border: 1px solid blue;
+    background-color:skyblue;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color:#ff0000;
+}
+
+button.zero {
+    flex:50%;
+}
+button.css {
+    border-radius: 0px 0px 10px 10px ;
+}
+
+</style>
+<body>
+    <div class="calculator">
+        <div class="display">0</div>
+        <div class="buttons">
+            <button>C</button>
+            <button>DEL</button>
+            <button>%</button>
+            <button>/</button>
+            <button>7</button>
+            <button>8</button>
+            <button>9</button>
+            <button>*</button>
+            <button>4</button>
+            <button>5</button>
+            <button>6</button>
+            <button>-</button>
+            <button>1</button>
+            <button>2</button>
+            <button>3</button>
+            <button>+</button>
+            <button class="zero">0</button>
+            <button>.</button>
+            <button class="css">=</button>
+        </div>
+    </div>
+</body>
+</html>
