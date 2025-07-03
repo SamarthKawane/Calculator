@@ -1,87 +1,128 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
     <title>Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f2f2f2;
+        }
+
+        .calculator {
+            display: flex;
+            flex-direction: column;
+            width: 300px;
+            border-radius: 10px;
+            background-color: blue;
+            overflow: hidden;
+        }
+
+        .display {
+            background-color: gray;
+            color: white;
+            font-size: 2em;
+            padding: 20px;
+            text-align: right;
+            word-wrap: break-word;
+            min-height: 60px;
+        }
+
+        .buttons {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        button {
+            flex: 1 0 25%;
+            padding: 20px;
+            font-size: 1.2em;
+            border: 1px solid blue;
+            background-color: skyblue;
+            cursor: pointer;
+            outline: none;
+        }
+
+        button:hover {
+            background-color: #ff0000;
+        }
+
+        button.zero {
+            flex: 0 0 50%;
+        }
+
+        button.equal {
+            border-radius: 0 0 10px 10px;
+            background-color: gray;
+            color: white;
+        }
+    </style>
 </head>
-<style>
-    body {
-    font-family: Arial, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-}
-
-.calculator {
-    display: flex;
-    flex-direction: column;
-    width: 300px;
-    border-radius: 10px;
-    background-color: blue;
-}
-
-.display {
-    background-color: gray;
-    border-radius: 10px 10px 0px 0px;
-    color: white;
-    font-size: 2em;
-    padding: 20px;
-    text-align: right;
-}
-
-.buttons {
-    display: flex;
-    flex-wrap: wrap;
-}
-
-button {
-    flex: 1 0 25%;
-    padding: 20px;
-    font-size: 1.2em;
-    border: 1px solid blue;
-    background-color:skyblue;
-    cursor: pointer;
-}
-
-button:hover {
-    background-color:#ff0000;
-}
-
-button.zero {
-    flex:50%;
-}
-button.css {
-    border-radius: 0px 0px 10px 10px ;
-}
-
-</style>
 <body>
     <div class="calculator">
-        <div class="display">0</div>
+        <div class="display" id="display">0</div>
         <div class="buttons">
-            <button>C</button>
-            <button>DEL</button>
-            <button>%</button>
-            <button>/</button>
-            <button>7</button>
-            <button>8</button>
-            <button>9</button>
-            <button>*</button>
-            <button>4</button>
-            <button>5</button>
-            <button>6</button>
-            <button>-</button>
-            <button>1</button>
-            <button>2</button>
-            <button>3</button>
-            <button>+</button>
-            <button class="zero">0</button>
-            <button>.</button>
-            <button class="css">=</button>
+            <button onclick="clearDisplay()">C</button>
+            <button onclick="deleteLast()">DEL</button>
+            <button onclick="appendValue('%')">%</button>
+            <button onclick="appendValue('/')">/</button>
+
+            <button onclick="appendValue('7')">7</button>
+            <button onclick="appendValue('8')">8</button>
+            <button onclick="appendValue('9')">9</button>
+            <button onclick="appendValue('*')">*</button>
+
+            <button onclick="appendValue('4')">4</button>
+            <button onclick="appendValue('5')">5</button>
+            <button onclick="appendValue('6')">6</button>
+            <button onclick="appendValue('-')">-</button>
+
+            <button onclick="appendValue('1')">1</button>
+            <button onclick="appendValue('2')">2</button>
+            <button onclick="appendValue('3')">3</button>
+            <button onclick="appendValue('+')">+</button>
+
+            <button class="zero" onclick="appendValue('0')">0</button>
+            <button onclick="appendValue('.')">.</button>
+            <button class="equal" onclick="calculate()">=</button>
         </div>
     </div>
-</body>
-</html>
 
+    <script>
+        let display = document.getElementById('display');
+
+        function appendValue(value) {
+            if (display.innerText === '0' && value !== '.') {
+                display.innerText = value;
+            } else {
+                display.innerText += value;
+            }
+        }
+
+        function clearDisplay() {
+            display.innerText = '0';
+        }
+
+        function deleteLast() {
+            if (display.innerText.length > 1) {
+                display.innerText = display.innerText.slice(0, -1);
+            } else {
+                display.innerText = '0';
+            }
+        }
+
+        function calculate() {
+            try {
+                display.innerText = eval(display.innerText.replace('%', '/100'));
+            } catch (e) {
+                display.innerText = 'Error';
+            }
+        }
+    </script>
+</body>
 </html>
