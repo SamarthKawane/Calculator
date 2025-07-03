@@ -1,4 +1,4 @@
-This project helps users perform simple arithmetic operations like addition, subtraction, multiplication, and division through a clean and responsive user interface.
+This project helps users perform simple arithmetic operations like addition, subtraction, multiplication, and division through a clean and responsive user interface build using HTML, CSS and JavaScript.
 
 Features :
 - Addition, Subtraction, Multiplication, Division
